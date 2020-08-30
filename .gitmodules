@@ -1,0 +1,3 @@
+[submodule "pcba/KiBoM"]
+	path = pcba/KiBoM
+	url = https://github.com/SchrodingersGat/KiBoM.git

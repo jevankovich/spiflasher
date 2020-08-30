@@ -1,7 +1,7 @@
 (export (version D)
   (design
     (source /home/justin/electronics/spiflasher/pcba/spiflasher.sch)
-    (date "Fri 28 Aug 2020 06:23:45 PM CDT")
+    (date "Sun 30 Aug 2020 03:41:13 PM CDT")
     (tool "Eeschema 5.1.5")
     (sheet (number 1) (name /) (tstamps /)
       (title_block
@@ -19,6 +19,8 @@
       (value USB_B_Micro)
       (footprint Connector_USB:USB_Micro-B_Wuerth_629105150521)
       (datasheet ~)
+      (fields
+        (field (name Digikey) " 732-5960-1-ND "))
       (libsource (lib Connector) (part USB_B_Micro) (description "USB Micro Type B connector"))
       (sheetpath (names /) (tstamps /))
       (tstamp 5F2B911F))
@@ -27,6 +29,7 @@
       (footprint Package_SO:TSSOP-14_4.4x5mm_P0.65mm)
       (datasheet http://www.ti.com/lit/ds/symlink/txb0104.pdf)
       (fields
+        (field (name Digikey) " 296-21929-1-ND ")
         (field (name LCSC) C60708))
       (libsource (lib Logic_LevelTranslator) (part TXB0104PW) (description "4-Bit Bidirectional Voltage-Level Translator, Auto Direction Sensing and ±15-kV ESD Protection, 1.2 - 3.6V APort, 1.65 - 5.5V BPort, TSSOP-14"))
       (sheetpath (names /) (tstamps /))
@@ -43,6 +46,7 @@
       (footprint Package_QFP:LQFP-48_7x7mm_P0.5mm)
       (datasheet https://www.ftdichip.com/Support/Documents/DataSheets/ICs/DS_FT232H.pdf)
       (fields
+        (field (name Digikey) 768-1101-1-ND)
         (field (name LCSC) C51997))
       (libsource (lib Interface_USB) (part FT232H) (description "Hi Speed Single Channel USB UART/FIFO, LQFP/QFN-48"))
       (sheetpath (names /) (tstamps /))
@@ -52,6 +56,7 @@
       (footprint Package_TO_SOT_SMD:SOT-23-6)
       (datasheet http://ww1.microchip.com/downloads/en/DeviceDoc/20001749K.pdf)
       (fields
+        (field (name Digikey) " 93LC56BT-I/OTCT-ND ")
         (field (name LCSC) C190271))
       (libsource (lib Memory_EEPROM) (part 93LCxxBxxOT) (description "Serial EEPROM, 93 Series, 2.5V, SOT-23-6"))
       (sheetpath (names /) (tstamps /))
@@ -74,6 +79,8 @@
       (value Conn_02x04_Counter_Clockwise)
       (footprint Package_DIP:DIP-8_W7.62mm_Socket)
       (datasheet ~)
+      (fields
+        (field (name Digikey) " 1212-1003-ND "))
       (libsource (lib Connector_Generic) (part Conn_02x04_Counter_Clockwise) (description "Generic connector, double row, 02x04, counter clockwise pin numbering scheme (similar to DIP packge numbering), script generated (kicad-library-utils/schlib/autogen/connector/)"))
       (sheetpath (names /) (tstamps /))
       (tstamp 5F2BB64B))
@@ -291,6 +298,7 @@
       (footprint Inductor_SMD:L_0603_1608Metric)
       (datasheet ~)
       (fields
+        (field (name Digikey) " 445-2205-1-ND ")
         (field (name LCSC) C21189))
       (libsource (lib Device) (part L_Core_Ferrite_Small) (description "Inductor with ferrite core, small symbol"))
       (sheetpath (names /) (tstamps /))
@@ -300,6 +308,7 @@
       (footprint Inductor_SMD:L_0603_1608Metric)
       (datasheet ~)
       (fields
+        (field (name Digikey) " 445-2205-1-ND ")
         (field (name LCSC) C21189))
       (libsource (lib Device) (part L_Core_Ferrite_Small) (description "Inductor with ferrite core, small symbol"))
       (sheetpath (names /) (tstamps /))
@@ -309,6 +318,7 @@
       (footprint Inductor_SMD:L_0603_1608Metric)
       (datasheet ~)
       (fields
+        (field (name Digikey) " 445-2205-1-ND ")
         (field (name LCSC) C21189))
       (libsource (lib Device) (part L_Core_Ferrite_Small) (description "Inductor with ferrite core, small symbol"))
       (sheetpath (names /) (tstamps /))
@@ -366,6 +376,7 @@
       (footprint Crystal:Crystal_SMD_3225-4Pin_3.2x2.5mm_HandSoldering)
       (datasheet ~)
       (fields
+        (field (name Digikey) " 2388-SXT32420AA07-12.000M-ND ")
         (field (name LCSC) C9002))
       (libsource (lib Device) (part Crystal_GND24_Small) (description "Four pin crystal, GND on pins 2 and 4, small symbol"))
       (sheetpath (names /) (tstamps /))
