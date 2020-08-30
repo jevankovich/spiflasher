@@ -4,3 +4,12 @@
 *.xml
 # backup files
 *.*-bak
+# backup for kibom
+*.tmp
+
+# manufacturing files
+gerbers
+gerbers.zip
+
+# kicad cache stuff
+fp-info-cache
