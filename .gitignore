@@ -2,6 +2,7 @@
 *.csv
 *.tsv
 *.xml
+*.html
 # backup files
 *.*-bak
 # backup for kibom
