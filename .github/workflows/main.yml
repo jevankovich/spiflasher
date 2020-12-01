@@ -46,23 +46,8 @@ jobs:
         run: |
           make
           zip flashrom flashrom.exe /mingw64/bin/libusb-1.0.dll /mingw64/bin/libftdi1.dll
-      - id: create-release
-        if: steps.cache-build.outputs.cache-hit != 'true'
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - uses: actions/upload-artifact@v2
         with:
-          tag_name: master
-          release_name: Flashrom ${{ steps.commit-hash.outputs.short-hash }}
-          commitish: ${{ steps.commit-hash.outputs.hash }}
-          prerelease: true
-      - uses: actions/upload-release-asset@v1
-        if: steps.cache-build.outputs.cache-hit != 'true'
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
-          asset_path: ./flashrom.zip
-          asset_name: flashrom.zip
-          asset_content_type: application/zip
+          name: flashrom
+          path: flashrom.zip
             
