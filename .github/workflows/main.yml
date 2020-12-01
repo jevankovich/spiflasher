@@ -27,28 +27,37 @@ jobs:
         with:
           msystem: MINGW64
           update: true
-          install: make zip mingw-w64-x86_64-pkgconf mingw-w64-x86_64-libusb mingw-w64-x86_64-libftdi mingw-w64-x86_64-gcc
+          install: git make zip mingw-w64-x86_64-pkgconf mingw-w64-x86_64-libusb mingw-w64-x86_64-libftdi mingw-w64-x86_64-gcc
       - uses: actions/checkout@v2
         with:
           repository: 'flashrom/flashrom'
+      - id: commit-hash
+        run: echo "::set-output name=hash::$(git rev-parse --short HEAD)"
+      - name: Cache build
+        id: cache-build
+        uses: actions/cache@v2
+        with:
+          path: flashrom.zip
+          key: ${{ runner.os }}-${{ steps.commit-hash.outputs.hash }}
       - name: build
+        if: steps.cache-build.outputs.cache-hit != 'true'
         run: |
           make
           zip flashrom flashrom.exe /mingw64/bin/libusb-1.0.dll /mingw64/bin/libftdi1.dll
-      - id: commit-hash
-        run: echo "::set-output name=hash::$(git rev-parse --short HEAD)"
       - id: create-release
+        #if: steps.cache-build.outputs.cache-hit != 'true'
         uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag-name: master
-          release-name: Flashrom ${{ steps.commit-hash.outputs.hash }}
+          tag_name: master
+          release_name: Flashrom ${{ steps.commit-hash.outputs.hash }}
           owner: flashrom
           repo: flashrom
           commitish: ${{ steps.commit-hash.outputs.hash }}
           prerelease: true
       - uses: actions/upload-release-asset@v1
+        #if: steps.cache-build.outputs.cache-hit != 'true'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
