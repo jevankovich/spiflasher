@@ -39,7 +39,7 @@ jobs:
         id: cache-build
         uses: actions/cache@v2
         with:
-          path: flashrom.zip
+          path: flashrom.exe
           key: ${{ runner.os }}-${{ steps.commit-hash.outputs.hash }}
       - name: build
         if: steps.cache-build.outputs.cache-hit != 'true'
