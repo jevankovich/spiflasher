@@ -32,7 +32,9 @@ jobs:
         with:
           repository: 'flashrom/flashrom'
       - id: commit-hash
-        run: echo "::set-output name=hash::$(git rev-parse --short HEAD)"
+        run: |
+          echo "::set-output name=short-hash::$(git rev-parse --short HEAD)"
+          echo "::set-output name=hash::$(git rev-parse HEAD)"
       - name: Cache build
         id: cache-build
         uses: actions/cache@v2
@@ -45,19 +47,17 @@ jobs:
           make
           zip flashrom flashrom.exe /mingw64/bin/libusb-1.0.dll /mingw64/bin/libftdi1.dll
       - id: create-release
-        #if: steps.cache-build.outputs.cache-hit != 'true'
+        if: steps.cache-build.outputs.cache-hit != 'true'
         uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           tag_name: master
-          release_name: Flashrom ${{ steps.commit-hash.outputs.hash }}
-          owner: flashrom
-          repo: flashrom
+          release_name: Flashrom ${{ steps.commit-hash.outputs.short-hash }}
           commitish: ${{ steps.commit-hash.outputs.hash }}
           prerelease: true
       - uses: actions/upload-release-asset@v1
-        #if: steps.cache-build.outputs.cache-hit != 'true'
+        if: steps.cache-build.outputs.cache-hit != 'true'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
