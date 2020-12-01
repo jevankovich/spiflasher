@@ -34,9 +34,9 @@ jobs:
       - name: build
         run: |
           make
-          zip flashrom flashrom.exe C:\msys64\mingw64\bin\libusb-1.0.dll C:\msys64\mingw64\bin\libftdi1.dll
+          zip flashrom flashrom.exe /mingw64/bin/libusb-1.0.dll /mingw64/bin/libftdi1.dll
       - id: commit-hash
-        run: echo "::set-output name=hash::${git rev-parse --short HEAD}"
+        run: echo "::set-output name=hash::$(git rev-parse --short HEAD)"
       - id: create-release
         uses: actions/create-release@v1
         env:
