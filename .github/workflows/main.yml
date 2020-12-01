@@ -27,10 +27,10 @@ jobs:
         with:
           msystem: MINGW64
           update: true
-          install: unzip make mingw-w64-x86_64-pkgconf mingw-w64-x86_64-libusb mingw-w64-x86_64-libftdi mingw-w64-x86_64-gcc
+          install: git unzip make mingw-w64-x86_64-pkgconf mingw-w64-x86_64-libusb mingw-w64-x86_64-libftdi mingw-w64-x86_64-gcc
       - uses: actions/checkout@v2
         with:
-          repository: 'https://review.coreboot.org/flashrom.git'
+          repository: 'flashrom/flashrom'
       - name: build
         run: |
           make
