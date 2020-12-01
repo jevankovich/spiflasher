@@ -27,7 +27,7 @@ jobs:
         with:
           msystem: MINGW64
           update: true
-          install: git make zip mingw-w64-x86_64-pkgconf mingw-w64-x86_64-libusb mingw-w64-x86_64-libftdi mingw-w64-x86_64-gcc
+          install: git make mingw-w64-x86_64-pkgconf mingw-w64-x86_64-libusb mingw-w64-x86_64-libftdi mingw-w64-x86_64-gcc
       - uses: actions/checkout@v2
         with:
           repository: 'flashrom/flashrom'
@@ -45,9 +45,12 @@ jobs:
         if: steps.cache-build.outputs.cache-hit != 'true'
         run: |
           make
-          zip flashrom flashrom.exe /mingw64/bin/libusb-1.0.dll /mingw64/bin/libftdi1.dll
       - uses: actions/upload-artifact@v2
         with:
           name: flashrom
-          path: flashrom.zip
+          path: |
+            flashrom.exe
+            _temp/msys64/mingw64/bin/libusb-1.0.dll
+            _temp/msys64/mingw64/bin/libftdi1.dll
+            
             
