@@ -47,8 +47,8 @@ jobs:
           make
       - name: Copy dlls
         run: |
-          cp /msys64/mingw64/bin/libusb-1.0.dll .
-          cp /msys64/mingw64/bin/libftdi1.dll .
+          cp /mingw64/bin/libusb-1.0.dll .
+          cp /mingw64/bin/libftdi1.dll .
           ldd flashrom.exe
       - uses: actions/upload-artifact@v2
         with:
